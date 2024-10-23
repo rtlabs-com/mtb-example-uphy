@@ -105,6 +105,9 @@ DEFINES=$(MBEDTLSFLAGS) CY_RTOS_AWARE CYBSP_ETHERNET_CAPABLE CY_RETARGET_IO_CONV
 # Disable the data cache for XMC7000 devices
 DEFINES+=CY_DISABLE_XMC7000_DATA_CACHE
 
+# Enable littlefs lock/unlock callbacks
+DEFINES+=LFS_THREADSAFE
+
 # Select softfp or hardfp floating point. Default is softfp.
 VFP_SELECT=
 

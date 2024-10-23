@@ -1,5 +1,11 @@
 # U-Phy Sample Application 
 
+#### v0.7.0
+* Upgrade to latest U-Phy core library (v1.0.1)
+  - https://docs.rt-labs.com/u-phy/reference/release-notes.html
+* Added support for new abstraction layer between core product library and resources required in xmc72_evk target environment.
+  RTE - Run Time Environment, see mtb_shared/rtlabs-uphy-lib/latest-v0.X/rte
+
 #### v0.6.1
 * Fixes for network initialization problems
 * Profinet SNMP support added
@@ -81,22 +87,22 @@
   | **ethernet-core-freertos-lwip-mbedtls** |    release-v2.2.0    |
   | **ethernet-phy-driver**                 |    release-v1.1.0    |
   | **littlefs**                            |        v2.4.0        |
-  | **retarget-io**                         |    release-v1.6.0    |
+  | **retarget-io**                         |    release-v1.7.0    |
   | **serial-flash**                        |    release-v1.4.2    |
-  | **abstraction-rtos**                    |    release-v1.8.2    |
-  | **cat1cm0p**                            |    release-v1.7.0    |
-  | **clib-support**                        |    release-v1.5.0    |
-  | **cmsis**                               |    release-v5.8.1    |
-  | **SEARCH_connectivity-utilities**       |    release-v4.5.0    |
-  | **core-lib**                            |    release-v1.4.2    |
-  | **core-make**                           |    release-v3.3.1    |
-  | **ethernet-connection-manager**         |    release-v2.1.0    |
-  | **freertos**                            |  release-v10.5.002   |
-  | **SEARCH_lwip-freertos-integration**    |    release-v1.0.0    |
-  | **lwip-network-interface-integration**  |    release-v1.4.1    |
+  | **abstraction-rtos**                    |    release-v1.10.0    |
+  | **cat1cm0p**                            |    release-v1.8.0    |
+  | **clib-support**                        |    release-v1.6.0    |
+  | **cmsis**                               |    release-v5.8.2    |
+  | **SEARCH_connectivity-utilities**       |    release-v4.5.1    |
+  | **core-lib**                            |    release-v1.4.3    |
+  | **core-make**                           |    release-v3.4.1    |
+  | **ethernet-connection-manager**         |    release-v2.1.1    |
+  | **freertos**                            |  release-v10.5.004   |
+  | **SEARCH_lwip-freertos-integration**    |    release-v1.1.0    |
+  | **lwip-network-interface-integration**  |    release-v1.6.0    |
   | **lwip**                                | STABLE-2_1_2_RELEASE |
   | **mbedtls**                             |    mbedtls-3.4.0     |
-  | **mtb-hal-cat1**                        |    release-v2.6.1    |
-  | **mtb-pdl-cat1**                        |   release-v3.12.0    |
-  | **recipe-make-cat1c**                   |    release-v1.3.0    |
-  | **secure-sockets**                      |    release-v3.7.0    |
+  | **mtb-hal-cat1**                        |    release-v2.7.0    |
+  | **mtb-pdl-cat1**                        |   release-v3.16.0    |
+  | **recipe-make-cat1c**                   |    release-v1.4.1    |
+  | **secure-sockets**                      |    release-v3.10.0    |

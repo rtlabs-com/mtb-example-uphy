@@ -24,6 +24,9 @@
 #include <event_groups.h>
 #include <task.h>
 
+#include "cy_log.h"
+#include "osal_log.h"
+
 #include "uphy_demo_app.h"
 #include "shell.h"
 #include "filesys.h"
@@ -230,6 +233,44 @@ int app_log_output_callback (
    return printf( "%7s %s", level_str, logmsg);
 }
 
+/*
+ * uphy lib log function
+ */
+
+void os_log_cy (uint8_t type, const char * fmt, ...)
+{
+   int cy_log_level;
+   char log_buf[256];
+   va_list list;
+
+   switch (LOG_LEVEL_GET (type))
+   {
+   case LOG_LEVEL_VERBOSE:
+      cy_log_level = CY_LOG_DEBUG1;
+      break;
+   case LOG_LEVEL_DEBUG:
+      cy_log_level = CY_LOG_DEBUG;
+      break;
+   case LOG_LEVEL_INFO:
+      cy_log_level = CY_LOG_INFO;
+      break;
+   case LOG_LEVEL_WARNING:
+      cy_log_level = CY_LOG_WARNING;
+      break;
+   case LOG_LEVEL_ERROR:
+   case LOG_LEVEL_FATAL:
+   default:
+      cy_log_level = CY_LOG_ERR;
+      break;
+   }
+
+   va_start (list, fmt);
+   vsnprintf (log_buf, sizeof (log_buf), fmt, list);
+   va_end (list);
+
+   cy_log_msg (CYLF_MIDDLEWARE, cy_log_level, "%s", log_buf);
+}
+
 int main (void)
 {
    cy_rslt_t result;
@@ -242,8 +283,11 @@ int main (void)
    }
 
    /* Initialize logging  
-    * U-Phy messages are indentified as CYLF_MIDDLEWARE */
+    * U-Phy messages are identified as CYLF_MIDDLEWARE */
    cy_log_init(CY_LOG_INFO, app_log_output_callback, NULL);
+
+   /* use custom os_log implementation to route it to CY logs */
+   os_log = os_log_cy;
 
    /* Start uart shell console */
    shell_console_init();
