@@ -147,7 +147,7 @@ IP address may also be shown via shell command 'netcfg'
 Out of the box, this sample app will configure DHCP for Ethernet/IP and static ip address when selecting Profinet.
 Network configuration may be set in runtime using the 'netcfg' console command.
 
-The default static IP is configured in mtb_shared/rtlabs-uphy-lib/latest-v1.X/src/network/network.h
+The default static IP is configured in mtb_shared/rtlabs-uphy-lib/latest-v0.X/src/network/network.h
 
 ```
 #define APP_STATIC_IP_ADDR MAKE_IPV4_ADDRESS (192, 168, 0, 50)

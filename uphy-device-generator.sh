@@ -39,7 +39,7 @@ fi
 
 model=$1
 destination=generated
-uphy_lib_version=latest-v1.X
+uphy_lib_version=latest-v0.X
 
 if [ -n "$2" ]; then
    # set build tag
