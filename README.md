@@ -183,5 +183,17 @@ It can be run using the (modus) shell. Pass your device model as argument to the
 
 Note the content in the generated folder is overwritten. The script itself contains some comments that may be useful.
 
+## Requirements
 
+- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.2 or later (tested with v3.2)
+- Board support package (BSP) minimum required version for :
+   - KIT_XMC72_EVK: v1.0.0
+- Programming language: C
 
+## Supported toolchains (make variable 'TOOLCHAIN')
+
+- GNU Arm&reg; Embedded Compiler v11.3.1 (`GCC_ARM`) - Default value of `TOOLCHAIN`
+
+## Supported kits (make variable 'TARGET')
+
+- [XMC7200 Evaluation Kit](https://www.infineon.com/KIT_XMC72_EVK) (`KIT_XMC72_EVK`)
