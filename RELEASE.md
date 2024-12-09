@@ -70,3 +70,30 @@
 * Previous version of ECM (ethernet connection manager) allowed setting mac address in cy_ecm_ethif_init(). The latest version of ECM (v2.1.0) have this configuration done in device configurator. No alternative option of setting mac address in runtime has been found.
 
 * Example project & middleware repos not fully aligned with name convention as outlined in 'AN235691  ModusToolbox™ & Friends'.
+
+* **The versions of middleware libraries used and tested in code examples, as well as those utilized by the RT-Labs' middleware:**
+
+  | Library                                 |       Version        |
+  | --------------------------------------- | :------------------: |
+  | **ethernet-core-freertos-lwip-mbedtls** |    release-v2.2.0    |
+  | **ethernet-phy-driver**                 |    release-v1.1.0    |
+  | **littlefs**                            |        v2.4.0        |
+  | **retarget-io**                         |    release-v1.6.0    |
+  | **serial-flash**                        |    release-v1.4.2    |
+  | **abstraction-rtos**                    |    release-v1.8.2    |
+  | **cat1cm0p**                            |    release-v1.7.0    |
+  | **clib-support**                        |    release-v1.5.0    |
+  | **cmsis**                               |    release-v5.8.1    |
+  | **SEARCH_connectivity-utilities**       |    release-v4.5.0    |
+  | **core-lib**                            |    release-v1.4.2    |
+  | **core-make**                           |    release-v3.3.1    |
+  | **ethernet-connection-manager**         |    release-v2.1.0    |
+  | **freertos**                            |  release-v10.5.002   |
+  | **SEARCH_lwip-freertos-integration**    |    release-v1.0.0    |
+  | **lwip-network-interface-integration**  |    release-v1.4.1    |
+  | **lwip**                                | STABLE-2_1_2_RELEASE |
+  | **mbedtls**                             |    mbedtls-3.4.0     |
+  | **mtb-hal-cat1**                        |    release-v2.6.1    |
+  | **mtb-pdl-cat1**                        |   release-v3.12.0    |
+  | **recipe-make-cat1c**                   |    release-v1.3.0    |
+  | **secure-sockets**                      |    release-v3.7.0    |
