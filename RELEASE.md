@@ -4,6 +4,9 @@
 * Fixes for network initialization problems
 * Profinet SNMP support added
 
+  **NOTE** : When building application the lwip stack will be automatically patched with <mtb_shared>/mtb-mw-uphy/<release_tag>/src/lwip/src.
+
+
 ##### Known issues:
 * Only Eclipse IDE for ModusToolbox supported.
 
