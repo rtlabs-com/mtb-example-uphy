@@ -230,7 +230,7 @@ int app_log_output_callback (
       break;
    }
 
-   return printf( "%7s %s", level_str, logmsg);
+   return printf ("%7s %s", level_str, logmsg);
 }
 
 /*
@@ -271,6 +271,39 @@ void os_log_cy (uint8_t type, const char * fmt, ...)
    cy_log_msg (CYLF_MIDDLEWARE, cy_log_level, "%s", log_buf);
 }
 
+static void init_task (void * arg)
+{
+   /* Initialize logging
+    * U-Phy messages are identified as CYLF_MIDDLEWARE */
+   cy_log_init (CY_LOG_INFO, app_log_output_callback, NULL);
+
+   /* use custom os_log implementation to route it to CY logs */
+   os_log = os_log_cy;
+
+   /* Start uart shell console */
+   shell_console_init();
+
+   /* Mount filesystem on serial flash (needs to be done in task context) */
+   fs_init();
+
+   init_leds();
+
+   init_buttons();
+
+   start_demo();
+
+   /* task done, delete itself */
+   vTaskDelete (NULL);
+}
+
+void start_init_task (void)
+{
+   if (xTaskCreate (init_task, "init_task", 1024, NULL, 1, NULL) != pdPASS)
+   {
+      printf ("init_task failed to start\n");
+   }
+}
+
 int main (void)
 {
    cy_rslt_t result;
@@ -282,24 +315,8 @@ int main (void)
       CY_ASSERT (0);
    }
 
-   /* Initialize logging  
-    * U-Phy messages are identified as CYLF_MIDDLEWARE */
-   cy_log_init(CY_LOG_INFO, app_log_output_callback, NULL);
-
-   /* use custom os_log implementation to route it to CY logs */
-   os_log = os_log_cy;
-
-   /* Start uart shell console */
-   shell_console_init();
-
-   /* Mount filesystem on serial flash */
-   fs_init();
-
-   init_leds();
-
-   init_buttons();
-
-   start_demo();
+   /* init all subsystems in task context */
+   start_init_task();
 
    /* Enable global interrupts */
    __enable_irq();
