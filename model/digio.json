@@ -56,6 +56,9 @@
         "modification_time": "13:04:42",
         "min_data_interval": "2000",
         "default_data_interval": "4000"
+      },
+      "modbus": {
+        "port": "502"
       }
     }
   ],

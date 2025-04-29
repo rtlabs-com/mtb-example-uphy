@@ -225,6 +225,8 @@ up_t * up_app_init (up_bustype_t bustype)
       up_busconf.ethernetip = up_ethernetip_config;
       break;
    case UP_BUSTYPE_MODBUS:
+	  up_busconf.modbus = up_modbus_config;
+	  break;
    case UP_BUSTYPE_ECAT:
    default:
       printf ("Bustype %d unsupported\n", bustype);
@@ -410,8 +412,8 @@ int _cmd_about (int argc, char * argv[])
 {
    printf ("\r\nIndustrial Ethernet Demo\r\n\r\n");
    printf ("This user example shows how to implement Industrial Ethernet\r\n"
-           "connectivity using the U-Phy Middleware. Currently Profinet and\r\n"
-           "Ethernet/IP is supported.\r\n\r\n"
+           "connectivity using the U-Phy Middleware. Currently Profinet,\r\n"
+           "Ethernet/IP and ModBus TCP are supported.\r\n\r\n"
            "The application implements a basic I/O device connecting inputs\r\n"
            "and outputs to the EVK buttons and LEDs.\r\n\r\n"
            "Profinet GSDML and EtherNet/IP EDS files for integration in an\r\n"
@@ -500,7 +502,7 @@ const shell_cmd_t cmd_start = {
    .help_short = "start u-phy protocol",
    .help_long = "Start u-phy host device.\n"
                 "Usage: up_start <protocol>\n"
-                "where protocol can be profinet, ethernetip or mock\n"};
+                "where protocol can be profinet, ethernetip, modbus or mock\n"};
 
 SHELL_CMD (cmd_start);
 

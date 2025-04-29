@@ -12,8 +12,9 @@
 
 #include "model.h"
 
-#include "options.h"
-#include "osal.h" /* For NELEMENTS */
+#ifndef NELEMENTS
+#define NELEMENTS(a) (sizeof(a) / sizeof((a)[0]))
+#endif
 
 #include <stdint.h>
 
@@ -335,6 +336,10 @@ up_ethernetip_config_t up_ethernetip_config = {
    .config_assembly_id = 102,
    .input_only_heartbeat_assembly_id = 103,
    .listen_only_heartbeat_assembly_id = 104,
+};
+
+up_modbus_config_t up_modbus_config = {
+   .port = 502,
 };
 
 up_mockadapter_config_t up_mock_config = {0};
