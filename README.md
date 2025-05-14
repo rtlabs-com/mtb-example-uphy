@@ -39,6 +39,8 @@ Industrial Ethernet devices using U-Phy. Other resources:
     - Redefine Device I/O data using U-Phy Device Builder
     - Regenerate description files (GSDML, EDS) and code using U-Phy Generator (upgen)
 
+**Note** : The runtime of U-Phy stack is limited to 2 hours. To obtain the full version, please contact your regional sales representative of Infineon Technologies AG.
+
 ## Getting started
 
 ### Building and program application using Modus Toolbox
@@ -88,7 +90,6 @@ up_alarm             - up_alarm <add/remove> <slot_ix> <level> <error_type>
 up_autostart         - configure u-phy device autostart
 format_fs            - format the filesystem
 help                 - show help
-mac                  - read/write MAC address
 reboot               - reboot the device
 up_device            - show static device configuration
 up_signal            - get or set signal value and status
