@@ -1,5 +1,10 @@
 # U-Phy Sample Application 
 
+#### v0.7.1
+* Resolved issue in core lib related to application sync callback.
+* Removed shell command 'mac' used to set mac address as infineon currently does not support updating mac address in runtime. 
+* Resolved sync issue between generated model info and core lib database management related to station name.
+
 #### v0.7.0
 * Upgrade to latest U-Phy core library (v1.0.1)
   - https://docs.rt-labs.com/u-phy/reference/release-notes.html
