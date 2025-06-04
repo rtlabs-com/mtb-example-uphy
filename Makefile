@@ -103,7 +103,7 @@ MBEDTLSFLAGS = MBEDTLS_USER_CONFIG_FILE='"configs/mbedtls_user_config.h"'
 # Add additional defines to the build process (without a leading -D).
 DEFINES=$(MBEDTLSFLAGS) CY_RTOS_AWARE CYBSP_ETHERNET_CAPABLE CY_RETARGET_IO_CONVERT_LF_TO_CRLF
 # Disable the data cache for XMC7000 devices
-DEFINES+=CY_DISABLE_XMC7000_DATA_CACHE
+DEFINES+=CY_DISABLE_XMC7000_DATA_CACHE PRINT_HEAP_USAGE
 
 # Enable littlefs lock/unlock callbacks
 DEFINES+=LFS_THREADSAFE

@@ -47,6 +47,7 @@
 #include <stdint.h>
 #include <inttypes.h>
 #include <stdio.h>
+#include "rte_shell.h"
 
 /* ARM compiler also defines __GNUC__ */
 #if defined (__GNUC__) && !defined(__ARMCC_VERSION)
@@ -97,5 +98,34 @@ void print_heap_usage(char *msg)
     printf("********************************\r\n\n");
 #endif /* #if defined(PRINT_HEAP_USAGE) && defined (__GNUC__) && !defined(__ARMCC_VERSION) */
 }
+
+int get_heap_usage(void)
+{
+#if defined(PRINT_HEAP_USAGE) && defined (__GNUC__) && !defined(__ARMCC_VERSION)
+    /* ARM compiler also defines __GNUC__ */
+
+    struct mallinfo mall_info = mallinfo();
+    return mall_info.uordblks;
+#endif /* #if defined(PRINT_HEAP_USAGE) && defined (__GNUC__) && !defined(__ARMCC_VERSION) */
+}
+
+static int cmd_show_heap_usage(int argc, char *argv[])
+{
+    (void)argc; // Suppress unused parameter warning
+    (void)argv; // Suppress unused parameter warning
+
+    print_heap_usage("");
+    return 0;
+}
+
+static const shell_cmd_t show_heap_usage_cmd = {
+    .cmd = cmd_show_heap_usage,
+    .name = "show_heap",
+    .help_short = "Dump heap usage",
+    .help_long = "Usage: show_heap\n"
+                 "Shows the current heap usage statistics."
+};
+
+SHELL_CMD(show_heap_usage_cmd);
 
 /* [] END OF FILE */
