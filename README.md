@@ -7,7 +7,7 @@ Currently, Profinet and EtherNet/IP are supported.
 The application implements a basic I/O device connecting inputs and outputs to the EVK buttons and LEDs.
 Profinet GSDML and EtherNet/IP EDS files for integration in an engineering tool are found in the `generated/` folder.
 
-After building and programming the example, the EVK can be connected to a Profinet or EtherNet/IP network for evaluation.
+After building and programming the example, the EVK can be connected to a Profinet, EtherNet/IP or ModBus TCP network for evaluation.
 
 Using U-Phy, the process data of the sample application can easily be redefined.
 The inputs, outputs, and configuration parameters of the device are modeled using the U-Phy Device Builder.
@@ -27,6 +27,7 @@ Industrial Ethernet devices using U-Phy. Other resources:
 - Industrial Ethernet
     - Profinet Device
     - EtherNet/IP Adapter
+    - Modbus TCP Adapter
 - Command Line Interface (CLI)
     - Configuration of active protocol
     - Get/Set I/O data

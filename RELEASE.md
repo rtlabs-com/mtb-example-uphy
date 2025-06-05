@@ -1,5 +1,9 @@
 # U-Phy Sample Application 
 
+#### v0.7.2
+* Added Modbus TCP adapter
+* Added console command 'show_heap' to show current heap usage
+
 #### v0.7.1
 * Resolved issue in core lib related to application sync callback.
 * Removed shell command 'mac' used to set mac address as infineon currently does not support updating mac address in runtime. 
