@@ -25,6 +25,7 @@
 #include <stdio.h>
 
 extern void led_error();
+void print_heap_usage(char *msg);
 
 void HardFault_Handler (void)
 {
@@ -32,7 +33,7 @@ void HardFault_Handler (void)
    printf ("HardFault_Handler\n");
 
 #if defined(PRINT_HEAP_USAGE)
-   print_heap_usage();
+   print_heap_usage("");
 #endif
 
    CY_HALT();
