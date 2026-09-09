@@ -360,7 +360,7 @@
                     <Parameters>
                         <Param id="Acceptbroadcastframe" value="true"/>
                         <Param id="Autonegotate" value="true"/>
-                        <Param id="DHCPBool" value="false"/>
+                        <Param id="DHCPBool" value="true"/>
                         <Param id="MACclk" value="0u"/>
                         <Param id="NVICintrnum" value="3"/>
                         <Param id="PHYInterconnect" value="3u"/>

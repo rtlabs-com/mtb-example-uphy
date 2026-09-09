@@ -31,6 +31,7 @@
 #include "shell.h"
 #include "filesys.h"
 #include <inttypes.h>
+#include "network.h"
 
 #define LED_PROFINET_FLASH_DELAY (500 / portTICK_PERIOD_MS)
 #define LED_ACTIVITY_FLASH_DELAY (20 / portTICK_PERIOD_MS)
@@ -285,6 +286,9 @@ static void init_task (void * arg)
 
    /* Mount filesystem on serial flash (needs to be done in task context) */
    fs_init();
+
+   /* Load persisted settings */
+   db_load ("INFO");
 
    init_leds();
 

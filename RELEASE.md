@@ -1,5 +1,11 @@
 # U-Phy Sample Application 
 
+#### v0.8.1
+* Refactor Ethernet bringup
+* Removed netcfg command
+* Added ip_show command
+* ip_set without argument shows persisted settings
+
 #### v0.8.0
 * Added CC-Link CCIEFB adapter
 * Moved filesystem to internal flash. QSPI flash is no longer required.

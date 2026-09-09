@@ -252,23 +252,11 @@ void uphy_task (void * type)
    up_t * up;
    up_bustype_t bustype = (up_bustype_t)type;
    cy_rslt_t result;
-   ip_config_t ip_config;
-
-   if (bustype == UP_BUSTYPE_PROFINET || bustype == UP_BUSTYPE_CCLINK)
-   {
-      /* Protocol stack will handle IP addresses */
-      ip_config = IP_CONFIG_STATIC;
-   }
-   else
-   {
-      /* Use DHCP */
-      ip_config = IP_CONFIG_DYNAMIC;
-   }
 
    printf ("Init network\n");
    printf ("Application will hang until ethernet cable is inserted\n");
 
-   result = connect_to_ethernet (ip_config);
+   result = connect_to_ethernet();
    if (result != CY_RSLT_SUCCESS)
    {
       printf (
@@ -497,7 +485,7 @@ int _cmd_start (int argc, char * argv[])
    /* Check command line arguments */
    if (argc != 2)
    {
-      printf ("error - try \"help %s\n", argv[0]);
+      printf ("error - try \"help %s\"\n", argv[0]);
       return -1;
    }
 
@@ -528,7 +516,7 @@ int _cmd_autostart (int argc, char * argv[])
 
    if (argc != 2)
    {
-      printf ("error - try \"help %s\n", argv[0]);
+      printf ("error - try \"help %s\"\n", argv[0]);
       return -1;
    }
 

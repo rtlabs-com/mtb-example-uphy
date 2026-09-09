@@ -95,7 +95,8 @@ up_autostart         - configure u-phy device autostart
 format_fs            - format the filesystem
 help                 - show help
 ip_set               - Set network interface parameters
-ip_show              - Show network interface parameters
+ip_show              - show IP address and netmask
+lwip_stats           - display lwip stats
 mbus_show            - Show mbus registers
 reboot               - reboot the device
 up_device            - show static device configuration
@@ -103,8 +104,8 @@ up_signal            - get or set signal value and status
 up_start             - start u-phy protocol
 up_status            - show device status and signal values
 up_show              - show uphy state
-netcfg               - configure network parameters
 show_heap            - Dump heap usage
+
 > about
 
 Industrial Ethernet Demo
@@ -140,34 +141,60 @@ In the U-Phy concept, devices are defined by a model in JSON format. Device desc
 
 Note that the CLI can be used to watch or set the I/O data.
   
-### Find locally assigned IP address
-The IP address of your device / EVk is found in the serial log. Note that the IP address is set by engineering tools and may change when switching the active protocol.
+## Find Locally Assigned IP Address
 
-IP address may also be shown via shell command 'netcfg'
+Use the `ip_show` command to display current IP settings.
 
-```
-> netcfg
+**Important:** IP settings may change in the following situations:
+- When using engineering tools
+- When switching between active protocols
+- When running Profinet, which disables DHCP and uses the Profinet DCP protocol for device management instead
 
-[en0] :
-  mac address : 00:03:19:45:00:01
-  ipaddress   : 192.168.2.25
-  netmask     : 255.255.255.0
-  gateway     : 192.168.2.1
-  hostname    : not set
-  dhcp        : enabled
-```
-
-### Configuring network
-
-Out of the box, this sample app will configure DHCP for Ethernet/IP, CC-Link and Modbus, and static ip address when selecting Profinet.
-Network configuration may be set in runtime using the 'netcfg' console command.
-
-The default static IP is configured in mtb_shared/rtlabs-uphy-lib/latest-v0.X/src/network/network.h
+**Example output:**
 
 ```
-#define APP_STATIC_IP_ADDR MAKE_IPV4_ADDRESS (192, 168, 0, 50)
-#define APP_NETMASK        MAKE_IPV4_ADDRESS (255, 255, 255, 0)
-#define APP_STATIC_GATEWAY MAKE_IPV4_ADDRESS (192, 168, 0, 1)
+> ip_show
+Interface:     en0
+ MAC address:  00:03:19:45:00:00
+ Up:           True
+ Link:         True
+ IP address:   192.168.2.25
+ Netmask:      255.255.255.0
+ Gateway:      192.168.2.1
+ Hostname:     u-phy-dev
+DNS server:    192.168.2.10
+```
+
+## Configure Network Settings
+
+You can modify network configuration at runtime using the `ip_set` command. Changes take effect after rebooting the device.
+
+The sample app defaults to using DHCP.
+
+### Profinet Configuration
+
+Starting the Profinet adapter automatically disables DHCP. You can then:
+- Use an engineering tool (such as Proneta) to assign IP addresses, or
+- Manually assign a static IP address using `ip_set`
+
+### Set Static IP Address
+
+**Command syntax:**
+
+```
+> ip_set dhcp=false ipaddr=192.168.1.10 netmask=255.255.255.0 gateway=192.168.1.1
+```
+
+**Verify settings:**
+
+```
+> ip_set
+dhcp=false
+ipaddr=192.168.1.10
+netmask=255.255.255.0
+gateway=192.168.1.1
+nameserver=192.168.1.2
+hostname=u-phy-dev
 ```
 
 ### Connect to PLC
