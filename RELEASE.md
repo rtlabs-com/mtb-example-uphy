@@ -1,5 +1,9 @@
 # U-Phy Sample Application 
 
+#### v0.8.2
+
+* Fix an issue with loss of incoming characters in the shell
+
 #### v0.8.1
 * Refactor Ethernet bringup
 * Removed netcfg command
